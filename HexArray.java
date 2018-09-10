@@ -57,4 +57,16 @@ public class HexArray {
 			leftedge.add(i);
 			rightedge.add(i+7);
 		}
+		//actually populating the array with default Hexagons.
+		for (int i = 0; i < 233; i++) { 
+			hex_array[i] = new Hexagon();
+			if (i == 225) {
+				start = hex_array[i];
+				current = start;
+			}
+			if (i == 7) {
+				end = hex_array[i];
+			}
+		}	
+	}	
 }
