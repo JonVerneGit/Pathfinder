@@ -67,6 +67,20 @@ public class HexArray {
 			if (i == 7) {
 				end = hex_array[i];
 			}
-		}	
+		}
+		//defining weights for each node from the supplied file.
+		File file = new File(fileName);
+		FileReader fr = new FileReader(file);
+		BufferedReader br = new BufferedReader(fr);
+		String line;
+		//give each hexagon its respective values
+		while ((line = br.readLine()) != null) { 
+			StringTokenizer st = new StringTokenizer(line);
+			int index = Integer.parseInt(st.nextToken());
+			int cost = Integer.parseInt(st.nextToken());
+			hex_array[index-1].setCost(cost);
+			hex_array[index-1].position = index;
+			//System.out.println("Assigning hexagon "+index+" with cost "+cost+".");
+		}
 	}	
 }
