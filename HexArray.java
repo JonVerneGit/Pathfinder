@@ -124,5 +124,54 @@ public class HexArray {
 			
 		}
 		br.close();
-	}	
+	}
+	//the following six methods are actually not in use, i have changed the design
+	public boolean up(int index) {
+		if (index-15 >= 0) {
+			current = hex_array[index-15];
+			return true;
+		}
+		else
+			return false;
+	}
+	public boolean upright(int index) {
+		if (index-7 > 0 && !rightedge.contains(index)) {
+			current = hex_array[index-7];
+			return true;
+		}
+		else
+			return false;
+	}
+	public boolean upleft(int index) {
+		if (index-8 >= 0 && !leftedge.contains(index)) {
+			current = hex_array[index-8];
+			return true;
+		}
+		else
+			return false;
+	}
+	public boolean down(int index) {
+		if (index+15 <= 232) {
+			current = hex_array[index+15];
+			return true;
+		}
+		else
+			return false;
+	}
+	public boolean downright(int index) {
+		if (index+8 <= 232 && !rightedge.contains(index)) {
+			current = hex_array[index+8];
+			return true;
+		}
+		else
+			return false;
+	}
+	public boolean downleft(int index) {
+		if (index+7 <= 231 && !leftedge.contains(index)) {
+			current = hex_array[index+7];
+			return true;
+		}
+		else
+			return false;
+	}
 }
