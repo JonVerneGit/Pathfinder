@@ -37,4 +37,24 @@ public class HexArray {
 		int weight_downleft = -1;
 		int weight_downright = -1;
 	}
+	
+	Hexagon[] hex_array = new Hexagon[233];
+	Hexagon start;
+	Hexagon end;
+	Hexagon current;
+	ArrayList<Integer> leftedge = new ArrayList<Integer>();
+	ArrayList<Integer> rightedge = new ArrayList<Integer>();
+	
+	/**
+	 * add descriptive variable names.
+	 * @param fileName
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
+	HexArray(String fileName) throws IOException, FileNotFoundException {
+		//create arraylists of the indicies that lie on the left and right edges.
+		for (int i = 0; i < 226; i+=15) { 
+			leftedge.add(i);
+			rightedge.add(i+7);
+		}
 }
