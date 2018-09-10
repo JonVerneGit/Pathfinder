@@ -82,5 +82,47 @@ public class HexArray {
 			hex_array[index-1].position = index;
 			//System.out.println("Assigning hexagon "+index+" with cost "+cost+".");
 		}
+		
+			//defining each hexagon's (up to) 6 pointers and weights (weight of -1 is "unset")
+		for (int i = 0; i < 233; i++) { 
+			
+			//Assigns up values and weight for all indices not in the top two rows.
+			if (i-15 >= 0) {
+				hex_array[i].up = hex_array[i-15];
+				hex_array[i].weight_up = hex_array[i].up.cost;
+			}
+			
+			//Assigns an upright value and weight for all indices not in the top row or right edge.
+			if (i-7 > 0 && !rightedge.contains(i)) {
+				hex_array[i].upright = hex_array[i-7];
+				hex_array[i].weight_upright = hex_array[i].upright.cost;
+			}
+			
+			//Assigns an upleft value and weight for all indices not in the top row or left edge.
+			if (i-7 > 0 && !leftedge.contains(i)) {
+				hex_array[i].upleft = hex_array[i-8];
+				hex_array[i].weight_upleft = hex_array[i].upleft.cost;
+			}
+			
+			//Assigns a down value and weight for all indices not in the bottom two rows.
+			if (i+15 <= 232) {
+				hex_array[i].down = hex_array[i+15];
+				hex_array[i].weight_down = hex_array[i].down.cost;
+			}
+		
+			//Assigns a downright value and weight for all indices not in the bottom row or right edge.
+			if (i+8 <= 232 && !rightedge.contains(i)) {
+				hex_array[i].downright = hex_array[i+8];
+				hex_array[i].weight_downright = hex_array[i].downright.cost;
+			}
+			
+			//Assigns a downleft value and weight for all indices not in the bottom row or left edge.
+			if (i+8 <= 232 && !leftedge.contains(i)) {
+				hex_array[i].downleft = hex_array[i+7];
+				hex_array[i].weight_downleft = hex_array[i].downleft.cost;
+			}
+			
+		}
+		br.close();
 	}	
 }
